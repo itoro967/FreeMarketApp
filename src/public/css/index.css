@@ -1,0 +1,25 @@
+.main__tab {
+  box-shadow: 0 3px 3px gray;
+  padding: 15px 0 0 50px;
+  background-color: white;
+}
+
+.main__items {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+  padding: 20px;
+}
+
+.tab-recommend,
+.tab-mylist {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+.tab-recommend {
+  color: red;
+}

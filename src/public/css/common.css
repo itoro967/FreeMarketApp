@@ -1,0 +1,21 @@
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: black;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.search-input {
+  height: 40px;
+  width: 400px;
+}
+
+.main {
+  padding-top: 70px;
+}
