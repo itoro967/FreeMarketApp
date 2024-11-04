@@ -1,0 +1,45 @@
+.main__inner {
+  margin: 0 auto;
+  width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.input {
+  width: 680px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+.submit-button {
+  background: #FF5555;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.link {
+  text-decoration: none;
+}
