@@ -10,10 +10,11 @@
   <a class="tab-mylist" href="">マイリスト</a>
 </div>
 <div class="main__items">
-  @for($i=1;$i<30;$i++)
-    <a href="/item/test" class="item">
-    <div class="item-image" src="" alt="" style="height: 290px;width:290px; background:gray"></div>
-    商品名{{$i}}</a>
-    @endfor
+  @foreach($items as $item)
+  <a href="/item/{{$item->id}}" class="item">
+    <img class="item-image" src="{{$item->image}}" alt="{{$item->name}}">
+    {{$item->name}}
+  </a>
+  @endforeach
 </div>
 @endsection
