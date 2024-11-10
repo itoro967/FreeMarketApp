@@ -18,7 +18,7 @@
   @endif
 
   <div class="title">会員登録</div>
-  <form class="form" action="/register" method="POST">
+  <form class="form" action="/register" method="post">
     @csrf
     <label for="name" class="label">ユーザー名</label>
     <input type="text" class="input" name="name" id="name" value="{{old('name')}}">

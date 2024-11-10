@@ -13,6 +13,14 @@
     <div class="item-name">{{$item->name}}</div>
     <div class="item-brand">{{$item->brand}}</div>
     <div class="item-price">\<span class="price--value">{{ number_format($item->price)}}</span>(税込)</div>
+    <span class="favorite-icon">
+      <img src="{{ asset('img/star.svg') }}" alt="" class="favorite-image">
+      1
+    </span>
+    <span class="comment-icon">
+      <img src="{{ asset('img/chat.svg') }}" alt="" class="comment-image">
+      3
+    </span>
     <a href="" class="button">商品手続きへ</a>
     <div class="item-description">
       <div class="description-title">商品説明</div>

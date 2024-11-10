@@ -16,4 +16,5 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/register', [UserController::class, 'register']);
+Route::get('/logout', [UserController::class, 'logout']);
 Route::get('/item/{item_id}', [ItemController::class, 'detail']);

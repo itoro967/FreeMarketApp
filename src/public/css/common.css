@@ -16,6 +16,15 @@
   width: 400px;
 }
 
+.login-button,
+.logout-button,
+.mypage-button {
+  color: #FFFFFF;
+  margin: 0 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .main {
   padding-top: 70px;
 }

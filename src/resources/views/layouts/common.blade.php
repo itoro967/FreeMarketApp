@@ -19,8 +19,13 @@
         <button class="search-submit">検索</button>
       </form>
       <div class="header__menu">
-        <button class="logout-button">ログアウト</button>
-        <button class="mypage-button">マイページ</button>
+        @auth
+        <a href="/logout" class="logout-button">ログアウト</a>
+        @endauth
+        @guest
+        <a href="/login" class="login-button">ログイン</a>
+        @endguest
+        <a class="mypage-button">マイページ</a>
         <button class="sell-button">出品</button>
       </div>
     </div>
