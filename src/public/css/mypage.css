@@ -1,0 +1,29 @@
+.profile-image {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: #D9D9D9;
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-name {
+  display: inline-block;
+  width: 270px;
+  font-weight: bold;
+  font-size: 32px;
+  vertical-align: middle;
+  margin: 0 30px;
+}
+
+.edit-profile {
+  border: 1px solid #FF5555;
+  color: #FF5555;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+  text-decoration: none;
+}

@@ -25,7 +25,7 @@
         @guest
         <a href="/login" class="login-button">ログイン</a>
         @endguest
-        <a class="mypage-button">マイページ</a>
+        <a class="mypage-button" href="/mypage">マイページ</a>
         <button class="sell-button">出品</button>
       </div>
     </div>
