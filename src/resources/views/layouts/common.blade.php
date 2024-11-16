@@ -13,7 +13,9 @@
 <body>
   <header class="header">
     <div class="header__inner">
-      <img src="{{ asset('img/logo.svg') }}" alt="">
+      <a href="/">
+        <img src="{{ asset('img/logo.svg') }}" alt="">
+      </a>
       <form class="search" action="">
         <input class="search-input" type="text" placeholder="何をお探しですか?">
         <button class="search-submit">検索</button>

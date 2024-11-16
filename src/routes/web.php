@@ -21,3 +21,4 @@ Route::post('/mypage/profile', [UserController::class, 'changeProfile']);
 Route::get('/mypage', [UserController::class, 'mypage']);
 Route::get('/logout', [UserController::class, 'logout']);
 Route::get('/item/{item_id}', [ItemController::class, 'detail']);
+Route::post('/item/addcomment', [ItemController::class, 'addComment']);

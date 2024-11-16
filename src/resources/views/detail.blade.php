@@ -19,7 +19,7 @@
     </span>
     <span class="comment-icon">
       <img src="{{ asset('img/chat.svg') }}" alt="" class="comment-image">
-      3
+      {{count($comments)}}
     </span>
     <a href="" class="button">商品手続きへ</a>
     <div class="item-description">
@@ -41,14 +41,23 @@
 
     </div>
     <div class="item-comments">
-      <div class="comments-title">コメント(n)</div>
+      <div class="comments-title">コメント({{count($comments)}})</div>
+      @foreach($comments as $comment)
       <div class="comment">
-        こちらにコメントが入ります
+        <div class="user">
+          <img src="{{Storage::url($comment->user->image)}}" alt="" class="user-icon">
+          <span class="user-name">{{$comment->user->name}}</span>
+        </div>
+        <div class="comment-content">{{$comment->content}}
+          <div class="comment-created-at">{{$comment->created_at->diffForHumans()}}</div>
+        </div>
       </div>
-      <form class="comment-form">
+      @endforeach
+      <form class="comment-form" action="addcomment" method="post">
+        @csrf
         <div class="comment-form__title">商品へのコメント</div>
-        <textarea name="" class="comment-form__textarea">
-      </textarea>
+        <input type="hidden" name="item_id" value="{{$item->id}}">
+        <textarea name="comment" class="comment-form__textarea"></textarea>
         <button type="submit" class="button">コメントを送信する</button>
       </form>
     </div>
