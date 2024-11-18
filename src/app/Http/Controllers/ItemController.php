@@ -12,7 +12,8 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         $name = $request->input('search');
-        $items = Item::search($name)->select('id', 'image', 'name')->get();
+        $tab = $request->input('tab');
+        $items = Item::search($name, $tab)->select('id', 'image', 'name')->get();
         return view('index', compact('items'));
     }
 

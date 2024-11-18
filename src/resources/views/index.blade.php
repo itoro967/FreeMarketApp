@@ -6,8 +6,8 @@
 
 @section('main')
 <div class="main__tab">
-  <a class="tab-recommend" href="">おすすめ</a>
-  <a class="tab-mylist" href="">マイリスト</a>
+  <a href="?tab=&search={{request()->query('search')}}" @class(['tab-recommend','tab--active'=>(request()->query('tab')!='mylist')])>おすすめ</a>
+  <a href="?tab=mylist&search={{request()->query('search')}}" @class(['tab-mylist','tab--active'=>(request()->query('tab')=='mylist')])>マイリスト</a>
 </div>
 <div class="main__items">
   @foreach($items as $item)
