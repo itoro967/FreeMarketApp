@@ -29,4 +29,11 @@ class ItemController extends Controller
         Comment::create(['user_id' => $user_id, 'item_id' => $data['item_id'], 'content' => $data['comment']]);
         return redirect('/item/' . $data['item_id']);
     }
+    public function favorite(Request $request)
+    {
+        $data = $request->all();
+        $user_id = Auth::user()->id;
+        Item::find($data['item_id'])->favorite($user_id);
+        return redirect('/item/' . $data['item_id']);
+    }
 }

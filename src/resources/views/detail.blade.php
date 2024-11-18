@@ -13,14 +13,28 @@
     <div class="item-name">{{$item->name}}</div>
     <div class="item-brand">{{$item->brand}}</div>
     <div class="item-price">\<span class="price--value">{{ number_format($item->price)}}</span>(税込)</div>
-    <span class="favorite-icon">
-      <img src="{{ asset('img/star.svg') }}" alt="" class="favorite-image">
-      1
-    </span>
-    <span class="comment-icon">
-      <img src="{{ asset('img/chat.svg') }}" alt="" class="comment-image">
-      {{count($comments)}}
-    </span>
+    <div>
+      <span class="favorite-icon">
+        <form action="favorite" class="favorite-form" method="post">
+          @csrf
+          <input type="hidden" name="item_id" value="{{$item->id}}">
+          <button type="submit" class="favorite-submit">
+            <!-- TODO: 後でUserモデルから参照するように書き換える -->
+            @if($item->isFavorite(Auth::user()->id))
+            <img src="{{ asset('img/star-yellow.svg') }}" alt="" class="favorite-image">
+            @else
+            <img src="{{ asset('img/star.svg') }}" alt="" class="favorite-image">
+            @endif
+          </button>
+        </form>
+        <span>{{$item->favorites->count()}}</span>
+      </span>
+
+      <span class="comment-icon">
+        <img src="{{ asset('img/chat.svg') }}" alt="" class="comment-image">
+        <span>{{count($comments)}}</span>
+      </span>
+    </div>
     <a href="" class="button">商品手続きへ</a>
     <div class="item-description">
       <div class="description-title">商品説明</div>

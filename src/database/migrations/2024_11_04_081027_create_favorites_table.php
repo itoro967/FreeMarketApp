@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('favorites', function (Blueprint $table) {
-            $table->primary(['category_id', 'item_id']);
-            $table->foreignId('category_id')->constrained()->restrictOnUpdate()->restrictOnDelete();
+            $table->primary(['user_id', 'item_id']);
+            $table->foreignId('user_id')->constrained()->restrictOnUpdate()->restrictOnDelete();
             $table->foreignId('item_id')->constrained()->restrictOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
