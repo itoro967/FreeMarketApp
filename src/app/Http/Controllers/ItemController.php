@@ -9,9 +9,10 @@ use App\Models\Comment;
 
 class ItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $items = Item::all('id', 'image', 'name');
+        $name = $request->input('search');
+        $items = Item::search($name)->select('id', 'image', 'name')->get();
         return view('index', compact('items'));
     }
 

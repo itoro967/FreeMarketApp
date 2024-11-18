@@ -16,8 +16,8 @@
       <a href="/">
         <img src="{{ asset('img/logo.svg') }}" alt="">
       </a>
-      <form class="search" action="">
-        <input class="search-input" type="text" placeholder="何をお探しですか?">
+      <form class="search" action="" method="get">
+        <input class="search-input" type="text" name="search" placeholder="何をお探しですか?">
         <button class="search-submit">検索</button>
       </form>
       <div class="header__menu">
