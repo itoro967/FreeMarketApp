@@ -36,8 +36,10 @@ class Item extends Model
     {
         if ($this->isFavorite($user_id)) {
             $this->favorites()->detach($user_id);
+            return "お気に入りを解除しました";
         } else {
             $this->favorites()->attach($user_id);
+            return "お気に入りを登録しました";
         }
     }
 }

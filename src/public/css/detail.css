@@ -118,3 +118,10 @@
   width: 100%;
   height: 150px;
 }
+
+.comment--guest {
+  background-color: #E5E5E5;
+  text-align: center;
+  padding: 15px 0;
+  margin: 15px;
+}

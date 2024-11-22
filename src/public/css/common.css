@@ -42,3 +42,54 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.message {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  background-color: aquamarine;
+  width: 300px;
+  border-radius: 5px;
+  animation: message 5.5s ease-in-out forwards;
+}
+
+.message__content {
+  padding: 10px;
+}
+
+.message__progress-bar {
+  background-color: rgb(194, 194, 194);
+  height: 10px;
+  animation: progress 5s linear forwards;
+  border-radius: 0 5px 5px 0;
+}
+
+@keyframes progress {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes message {
+  0% {
+    transform: translate(-50%, -100%);
+  }
+
+  5% {
+    transform: translate(-50%, 0);
+  }
+
+  95% {
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    transform: translate(-50%, -100%);
+  }
+}

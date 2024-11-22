@@ -33,6 +33,11 @@
     </div>
   </header>
   <main class="main">
+    @if(session('message'))
+    <div class="message"><a class="message__content">{{session('message')}}</a>
+      <div class="message__progress-bar"></div>
+    </div>
+    @endif
     @yield('main')
   </main>
 </body>

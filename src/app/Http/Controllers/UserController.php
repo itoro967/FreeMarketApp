@@ -28,12 +28,13 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $newProfile = $request->input();
-        $imagePath = $request->file('image')->store('public/user');
-
-        if ($user->image = ! Null)
-            Storage::delete($user->image);
-
-        $newProfile['image'] = $imagePath;
+        if ($request->file('image')) {
+            $imagePath = $request->file('image')->store('public/user');
+            $newProfile['image'] = $imagePath;
+            // 過去プロフィール画像を削除
+            if ($user->image = ! Null)
+                Storage::delete($user->image);
+        }
         $user->update($newProfile);
         return view('auth.editProfile');
     }

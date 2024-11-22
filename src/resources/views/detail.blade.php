@@ -18,14 +18,18 @@
         <form action="favorite" class="favorite-form" method="post">
           @csrf
           <input type="hidden" name="item_id" value="{{$item->id}}">
+          @auth
           <button type="submit" class="favorite-submit">
-            <!-- TODO: 後でUserモデルから参照するように書き換える -->
             @if($item->isFavorite(Auth::user()->id))
             <img src="{{ asset('img/star-yellow.svg') }}" alt="" class="favorite-image">
             @else
             <img src="{{ asset('img/star.svg') }}" alt="" class="favorite-image">
             @endif
           </button>
+          @endauth
+          @guest
+          <img src="{{ asset('img/star.svg') }}" alt="" class="favorite-image" onclick="favoriteAlert()">
+          @endguest
         </form>
         <span>{{$item->favorites->count()}}</span>
       </span>
@@ -70,11 +74,21 @@
       <form class="comment-form" action="addcomment" method="post">
         @csrf
         <div class="comment-form__title">商品へのコメント</div>
+        @auth
         <input type="hidden" name="item_id" value="{{$item->id}}">
         <textarea name="comment" class="comment-form__textarea"></textarea>
         <button type="submit" class="button">コメントを送信する</button>
+        @endauth
+        @guest
+        <div class="comment--guest">コメントは会員のみ投稿できます</div>
+        @endguest
       </form>
     </div>
   </div>
 </div>
+<script>
+  function favoriteAlert() {
+    alert("お気に入り登録は会員のみご利用いただけます。")
+  }
+</script>
 @endsection

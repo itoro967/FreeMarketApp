@@ -35,7 +35,8 @@ class ItemController extends Controller
     {
         $data = $request->all();
         $user_id = Auth::user()->id;
-        Item::find($data['item_id'])->favorite($user_id);
-        return redirect('/item/' . $data['item_id']);
+        $result = Item::find($data['item_id'])->favorite($user_id);
+
+        return redirect('/item/' . $data['item_id'])->with('message', $result);
     }
 }
