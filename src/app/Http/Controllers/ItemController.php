@@ -39,4 +39,9 @@ class ItemController extends Controller
 
         return redirect('/item/' . $data['item_id'])->with('message', $result);
     }
+    public function purchase($item_id)
+    {
+        $item = Item::find($item_id);
+        return view('purchase', compact('item'));
+    }
 }

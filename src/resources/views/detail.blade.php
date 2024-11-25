@@ -39,7 +39,7 @@
         <span>{{count($comments)}}</span>
       </span>
     </div>
-    <a href="" class="button">商品手続きへ</a>
+    <a href="/purchase/{{$item->id}}" class="button">商品手続きへ</a>
     <div class="item-description">
       <div class="description-title">商品説明</div>
       <div class="description-contents">

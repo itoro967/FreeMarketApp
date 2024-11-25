@@ -16,7 +16,7 @@
       <a href="/">
         <img src="{{ asset('img/logo.svg') }}" alt="">
       </a>
-      <form class="search" action="" method="get">
+      <form class="search" action="/" method="get">
         <input class="search-input" type="text" name="search" placeholder="何をお探しですか?" value="{{request()->query('search')}}">
         <button class="search-submit">検索</button>
       </form>
