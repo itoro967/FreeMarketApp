@@ -17,17 +17,21 @@
     <div class="payment">
       <div class="payment-title">支払い方法</div>
       <div class="payment-content">
-        <select name="payment-select" class="payment-select">
+        <select name="payment-select" class="payment-select" onchange="changePayment(this.value)">
           <option hidden>選択してください</option>
-          <option value="コンビニ払い">コンビニ払い</option>
+          <option value="コンビニ支払い">コンビニ支払い</option>
+          <option value="カード支払い">カード支払い</option>
         </select>
       </div>
     </div>
     <div class="sipping">
-      <div class="sipping-title">配送先</div>
+      <div class="sipping__header">
+        <div class="sipping-title">配送先</div>
+        <a href="/mypage/profile" class="address-edit-button">変更する</a>
+      </div>
       <div class="sipping-content">
-        <span class="post-code">〒XXX-YYYY</span>
-        <div class="address">ここには住所と建物が入ります
+        <span class="post-code">〒{{Auth::user()->post_code}}</span>
+        <div class="address">{{Auth::user()->address . ' ' . Auth::user()->building}}
         </div>
       </div>
     </div>
@@ -40,10 +44,15 @@
       </tr>
       <tr>
         <th>支払い方法</th>
-        <td>コンビニ払い</td>
+        <td id="payment">選択してください</td>
       </tr>
     </table>
     <a href="" class="button">購入する</a>
   </div>
 </div>
+<script>
+  function changePayment(value) {
+    document.getElementById('payment').innerText = value;
+  }
+</script>
 @endsection

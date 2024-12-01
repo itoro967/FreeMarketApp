@@ -18,6 +18,16 @@
   padding: 20px;
 }
 
+.sipping__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.address-edit-button {
+  color: #0073CC;
+  text-decoration: none;
+}
+
 .item {
   display: flex;
 }
