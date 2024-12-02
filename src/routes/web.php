@@ -24,3 +24,5 @@ Route::get('/item/{item_id}', [ItemController::class, 'detail']);
 Route::post('/item/addcomment', [ItemController::class, 'addComment']);
 Route::post('/item/favorite', [ItemController::class, 'favorite']);
 Route::get('/purchase/{item_id}', [ItemController::class, 'purchase']);
+Route::get('/sell', [ItemController::class, 'sell']);
+Route::post('/sell', [ItemController::class, 'store']);

@@ -27,6 +27,7 @@
     <div class="sipping">
       <div class="sipping__header">
         <div class="sipping-title">配送先</div>
+        <!-- TODO　後で住所変更画面を作る -->
         <a href="/mypage/profile" class="address-edit-button">変更する</a>
       </div>
       <div class="sipping-content">

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 class Item extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'image', 'brand', 'price', 'description', 'condition'];
 
     public function scopeSearch(Builder $query, $name, $tab)
     {
@@ -23,6 +24,10 @@ class Item extends Model
                 Auth::user()->id
             );
         }
+    }
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'item_categories')->withTimestamps();
     }
     public function favorites()
     {

@@ -68,6 +68,14 @@
   border-radius: 0 5px 5px 0;
 }
 
+.sell-button {
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
 @keyframes progress {
   0% {
     width: 100%;

@@ -7,7 +7,7 @@
 @section('main')
 <div class="main__inner">
   <div class="image">
-    <img class="item-image" src="{{$item->image}}" alt="{{$item->name}}"></img>
+    <img class="item-image" src="{{$item->image}}" alt="{{$item->name}}" onerror='this.src="{{Storage::url($item->image)}}";'></img>
   </div>
   <div class="detail">
     <div class="item-name">{{$item->name}}</div>
@@ -50,7 +50,11 @@
       <div class="info-title">商品の情報</div>
       <div class="category">
         <span href="" class="category-title">カテゴリー</span>
-        <span href="" class="category-content">ここにカテゴリ</span>
+        <span href="" class="category-content">
+          @foreach($categories as $category)
+          <span class="categories">{{$category}}</span>
+          @endforeach
+        </span>
       </div>
       <div class="condition">
         <span href="" class="condition-title">商品の状態</span>

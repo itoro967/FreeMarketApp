@@ -55,10 +55,14 @@
 }
 
 .description-title,
+.info-title {
+  font-size: 20px;
+}
+
+.description-title,
 .info-title,
 .comments-title {
   font-weight: bold;
-  font-size: 18px;
 }
 
 .category-title,
@@ -77,6 +81,15 @@
 .category,
 .condition {
   margin: 20px 0;
+}
+
+.categories {
+  display: inline-block;
+  background-color: #D9D9D9;
+  border-radius: 15px;
+  padding: 0 10px;
+  white-space: nowrap;
+  margin: 3px;
 }
 
 .user-icon {
