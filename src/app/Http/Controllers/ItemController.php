@@ -60,5 +60,6 @@ class ItemController extends Controller
         $param += compact('image');
         $item = Item::create($param);
         $item->categories()->attach($category_id_list['categories']);
+        return redirect('/')->with('message', '出品が完了しました');
     }
 }
