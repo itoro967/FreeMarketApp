@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
-    public function addComment(Request $request)
+    public function addComment(CommentRequest $request)
     {
         $data = $request->all();
         $user_id = Auth::user()->id;

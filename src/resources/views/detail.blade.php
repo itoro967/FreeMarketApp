@@ -78,6 +78,15 @@
       <form class="comment-form" action="addcomment" method="post">
         @csrf
         <div class="comment-form__title">商品へのコメント</div>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
         @auth
         <input type="hidden" name="item_id" value="{{$item->id}}">
         <textarea name="comment" class="comment-form__textarea"></textarea>

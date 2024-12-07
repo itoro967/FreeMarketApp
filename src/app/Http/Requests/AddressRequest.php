@@ -11,7 +11,7 @@ class AddressRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class AddressRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'post_code' => 'required|regex:/^[0-9]{3}-[0-9]{4}$/',
+            'address' => 'required',
+            'building' => 'required',
+            'image' => 'mimes:jpeg,png'
         ];
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\AddressRequest;
 
 class UserController extends Controller
 {
@@ -24,7 +25,7 @@ class UserController extends Controller
         return view('mypage');
     }
 
-    public function changeProfile(Request $request)
+    public function changeProfile(AddressRequest $request)
     {
         $user = Auth::user();
         $newProfile = $request->input();
