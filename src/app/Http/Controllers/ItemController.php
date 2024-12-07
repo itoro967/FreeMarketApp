@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Category;
@@ -24,22 +23,6 @@ class ItemController extends Controller
         $categories = $item->categories->pluck('content');
         $comments = Comment::where('item_id', $item_id)->get();
         return view('detail', compact('item', 'categories', 'comments'));
-    }
-
-    public function addComment(Request $request)
-    {
-        $data = $request->all();
-        $user_id = Auth::user()->id;
-        Comment::create(['user_id' => $user_id, 'item_id' => $data['item_id'], 'content' => $data['comment']]);
-        return redirect('/item/' . $data['item_id']);
-    }
-    public function favorite(Request $request)
-    {
-        $data = $request->all();
-        $user_id = Auth::user()->id;
-        $result = Item::find($data['item_id'])->favorite($user_id);
-
-        return redirect('/item/' . $data['item_id'])->with('message', $result);
     }
     public function purchase($item_id)
     {
