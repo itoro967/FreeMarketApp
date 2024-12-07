@@ -32,5 +32,6 @@
 .item-image {
   height: 290px;
   width: 290px;
+  object-fit: cover;
   display: block;
 }

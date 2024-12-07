@@ -52,6 +52,7 @@
 .item-image {
   height: 350px;
   width: 350px;
+  object-fit: contain;
 }
 
 .description-title,
