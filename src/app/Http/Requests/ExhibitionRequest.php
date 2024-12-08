@@ -11,7 +11,7 @@ class ExhibitionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class ExhibitionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image' => 'required|mimes:jpeg,png',
+            'categories' => 'required',
+            'condition' => 'required',
+            'item_name' => 'required',
+            'description' => 'required',
+            'price' => 'required|integer|min:0',
         ];
     }
 }

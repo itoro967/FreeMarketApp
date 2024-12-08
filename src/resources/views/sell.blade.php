@@ -8,6 +8,17 @@
 <form class="main__inner" action="/sell" method="post" enctype="multipart/form-data">
   @csrf
   <div class="title">商品の出品</div>
+
+  @if ($errors->any())
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
+
   <div class="item-image">
     <div class="item-image__title">商品画面</div>
     <div class="item-image__content">
@@ -37,7 +48,7 @@
   <div class="item-name-description">商品名と説明</div>
   <div class="item-name">
     <div class="item-name__title">商品名</div>
-    <input type="text" name="name" class="item-name__input">
+    <input type="text" name="item_name" class="item-name__input">
   </div>
   <div class="item-description">
     <div class="item-description__title">商品の説明</div>
@@ -46,11 +57,11 @@
   <div class="item-price">
     <div class="item-price__title">販売価格</div>
     <div class="item-price__input-box">
-      \<input type="number" name="price" class="item-price__input">
+      \<input type="number" name="price" class="item-price__input" min="0">
     </div>
 
     </input>
-    <button type="submit" class="button">出品する</button>
+    <button type=" submit" class="button">出品する</button>
 </form>
 <script>
   function previewImage(obj) {

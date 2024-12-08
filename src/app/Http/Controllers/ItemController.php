@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Category;
+use App\Http\Requests\ExhibitionRequest;
 
 class ItemController extends Controller
 {
@@ -34,9 +35,11 @@ class ItemController extends Controller
         $categories = Category::all();
         return view('sell', compact('categories'));
     }
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
-        $param = $request->only('name', 'condition', 'description', 'price');
+        $param = $request->only('item_name', 'condition', 'description', 'price');
+        $param['name'] = $param['item_name'];
+        unset($param['item_name']);
         $category_id_list = $request->only('categories');
         // TODO phpはデフォルトでアップロードファイルサイズ2M?後でphp.ini修正
         $image = $request->file('image')->store('public/item');

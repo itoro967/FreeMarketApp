@@ -20,11 +20,16 @@ return [
 
     'attributes' => [
         'name' => 'お名前',
+        'item_name' => '商品名',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
         'comment' => 'コメント',
         'post_code' => '郵便番号',
         'address' => '住所',
-        'building' => '建物名'
+        'building' => '建物名',
+        'image' => '画像',
+        'categories' => 'カテゴリー',
+        'description' => '商品説明',
+        'price' => '販売価格'
     ],
 ];
