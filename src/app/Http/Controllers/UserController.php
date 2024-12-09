@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AddressRequest;
+use App\Models\Item;
 
 class UserController extends Controller
 {
@@ -20,9 +21,11 @@ class UserController extends Controller
         return view('auth.editProfile');
     }
 
-    public function mypage()
+    public function mypage(Request $request)
     {
-        return view('mypage');
+        $tab = $request->input('tab');
+        $items = Item::where('user_id', Auth::user()->id)->get();
+        return view('mypage', compact('items'));
     }
 
     public function changeProfile(AddressRequest $request)

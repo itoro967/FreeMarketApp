@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 class Item extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'image', 'brand', 'price', 'description', 'condition'];
+    protected $fillable = ['name', 'image', 'brand', 'price', 'description', 'condition', 'user_id'];
 
     public function scopeSearch(Builder $query, $name, $tab)
     {

@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Http\Requests\ExhibitionRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -38,6 +39,7 @@ class ItemController extends Controller
     public function store(ExhibitionRequest $request)
     {
         $param = $request->only('item_name', 'condition', 'description', 'price');
+        $param['user_id'] = Auth::user()->id;
         $param['name'] = $param['item_name'];
         unset($param['item_name']);
         $category_id_list = $request->only('categories');

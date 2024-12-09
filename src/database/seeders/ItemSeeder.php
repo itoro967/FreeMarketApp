@@ -104,6 +104,7 @@ class ItemSeeder extends Seeder
         foreach ($params as $param) {
             $category_id_list = $param['category_id'];
             unset($param['category_id']);
+            $param['user_id'] = 1;
             $item = Item::create($param);
             $item->categories()->attach($category_id_list);
         }

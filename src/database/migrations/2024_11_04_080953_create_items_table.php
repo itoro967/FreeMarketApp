@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('price');
             $table->string('description');
             $table->string('condition');
+            $table->foreignId('user_id')->constrained()->restrictOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }
