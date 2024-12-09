@@ -5,7 +5,8 @@
 @endsection
 
 @section('main')
-<div class="main__inner">
+<form action="" class="main__inner" method="post">
+  @csrf
   <div class="item-purchase">
     <div class="item">
       <img class="item-image" src="{{$item->image}}" alt="{{$item->name}}" onerror='this.src="{{Storage::url($item->image)}}";'></img>
@@ -17,7 +18,7 @@
     <div class="payment">
       <div class="payment-title">支払い方法</div>
       <div class="payment-content">
-        <select name="payment-select" class="payment-select" onchange="changePayment(this.value)">
+        <select name="payment" class="payment-select" onchange="changePayment(this.value)">
           <option hidden>選択してください</option>
           <option value="コンビニ支払い">コンビニ支払い</option>
           <option value="カード支払い">カード支払い</option>
@@ -28,11 +29,11 @@
       <div class="sipping__header">
         <div class="sipping-title">配送先</div>
         <!-- TODO　後で住所変更画面を作る -->
-        <a href="/mypage/profile" class="address-edit-button">変更する</a>
+        <a href="/purchase/address/{{$item->id}}" class="address-edit-button">変更する</a>
       </div>
       <div class="sipping-content">
-        <span class="post-code">〒{{Auth::user()->post_code}}</span>
-        <div class="address">{{Auth::user()->address . ' ' . Auth::user()->building}}
+        <span class="post-code">〒{{$post_code}}</span>
+        <div class="address">{{$address . ' ' . $building}}
         </div>
       </div>
     </div>
@@ -48,12 +49,17 @@
         <td id="payment">選択してください</td>
       </tr>
     </table>
-    <a href="" class="button">購入する</a>
+    <input type="hidden" name="item_id" value="{{$item->id}}">
+    <input type="hidden" name="post_code" value="{{$post_code}}">
+    <input type="hidden" name="address" value="{{$address}}">
+    <input type="hidden" name="building" value="{{$building}}">
+    <button type="submit" class="button">購入する</button>
   </div>
-</div>
-<script>
-  function changePayment(value) {
-    document.getElementById('payment').innerText = value;
-  }
-</script>
+  </div>
+  <script>
+    function changePayment(value) {
+      document.getElementById('payment').innerText = value;
+    }
+  </script>
+</form>
 @endsection

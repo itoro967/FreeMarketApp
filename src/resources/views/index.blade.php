@@ -11,7 +11,7 @@
 </div>
 <div class="main__items">
   @foreach($items as $item)
-  <a href="/item/{{$item->id}}" class="item">
+  <a href="/item/{{$item->id}}" @class(['item','item--sold'=>($item->isSold())])>
     <img class="item-image" src="{{$item->image}}" alt="{{$item->name}}" onerror='this.src="{{Storage::url($item->image)}}";'>
     {{$item->name}}
   </a>

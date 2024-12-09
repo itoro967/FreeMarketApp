@@ -47,4 +47,12 @@ class Item extends Model
             return "お気に入りを登録しました";
         }
     }
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+    }
+    public function isSold()
+    {
+        return $this->order()->exists();
+    }
 }

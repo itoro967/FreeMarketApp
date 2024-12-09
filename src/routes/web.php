@@ -26,5 +26,8 @@ Route::get('/item/{item_id}', [ItemController::class, 'detail']);
 Route::post('/item/addcomment', [CommentController::class, 'addComment']);
 Route::post('/item/favorite', [FavoriteController::class, 'favorite']);
 Route::get('/purchase/{item_id}', [ItemController::class, 'purchase']);
+Route::put('/purchase/{item_id}', [ItemController::class, 'purchase']);
+Route::post('/purchase/{item_id}', [ItemController::class, 'sold']);
+Route::get('/purchase/address/{item_id}', [UserController::class, 'editAddress']);
 Route::get('/sell', [ItemController::class, 'sell']);
 Route::post('/sell', [ItemController::class, 'store']);

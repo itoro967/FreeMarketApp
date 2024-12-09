@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AddressRequest;
 use App\Models\Item;
+use App\Models\Order;
 
 class UserController extends Controller
 {
@@ -24,7 +25,11 @@ class UserController extends Controller
     public function mypage(Request $request)
     {
         $tab = $request->input('tab');
-        $items = Item::where('user_id', Auth::user()->id)->get();
+        if ($tab == 'buy' or $tab == null) {
+            $items = Auth::user()->soldItem;
+        } else if ($tab == 'sell') {
+            $items = Item::where('user_id', Auth::user()->id)->get();
+        }
         return view('mypage', compact('items'));
     }
 
@@ -49,5 +54,9 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+    public function editAddress($item_id)
+    {
+        return view('auth.editAddress', compact('item_id'));
     }
 }

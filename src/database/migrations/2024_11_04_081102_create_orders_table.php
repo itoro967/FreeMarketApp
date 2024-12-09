@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->primary(['user_id', 'item_id']);
+            $table->foreignId('item_id')->constrained()->restrictOnUpdate()->restrictOnDelete();
+            $table->foreignId('user_id')->constrained()->restrictOnUpdate()->restrictOnDelete();
+            $table->string('payment');
+            $table->string('post_code');
+            $table->string('address');
+            $table->string('building');
             $table->timestamps();
         });
     }

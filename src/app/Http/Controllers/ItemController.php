@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Category;
+use App\Models\Order;
 use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,15 +27,30 @@ class ItemController extends Controller
         $comments = Comment::where('item_id', $item_id)->get();
         return view('detail', compact('item', 'categories', 'comments'));
     }
-    public function purchase($item_id)
+    public function purchase(Request $request, $item_id)
     {
+        $param = $request->only(['post_code', 'address', 'building']);
+        if (!$param) {
+            $param = [
+                'post_code' => Auth::user()->post_code,
+                'address' => Auth::user()->address,
+                'building' => Auth::user()->building
+            ];
+        }
         $item = Item::find($item_id);
-        return view('purchase', compact('item'));
+        return view('purchase', compact('item'), $param);
     }
     public function sell()
     {
         $categories = Category::all();
         return view('sell', compact('categories'));
+    }
+    public function sold(Request $request)
+    {
+        $param = $request->only(['item_id', 'payment', 'post_code', 'address', 'building']);
+        $param['user_id'] = Auth::user()->id;
+        Order::create($param);
+        return redirect('/')->with('message', '購入が完了しました');
     }
     public function store(ExhibitionRequest $request)
     {
