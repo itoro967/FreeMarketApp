@@ -45,6 +45,11 @@
   width: 100%;
 }
 
+.button--disable {
+  background: #818181;
+  cursor: default;
+}
+
 .message {
   position: fixed;
   top: 0;

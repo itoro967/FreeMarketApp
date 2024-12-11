@@ -39,7 +39,11 @@
         <span>{{count($comments)}}</span>
       </span>
     </div>
+    @if($item->isSold())
+    <span class="button button--disable">商品手続きへ</span>
+    @else
     <a href="/purchase/{{$item->id}}" class="button">商品手続きへ</a>
+    @endif
     <div class="item-description">
       <div class="description-title">商品説明</div>
       <div class="description-contents">
@@ -82,7 +86,11 @@
         @auth
         <input type="hidden" name="item_id" value="{{$item->id}}">
         <textarea name="comment" class="comment-form__textarea"></textarea>
+        @if($item->isSold())
+        <span class="button button--disable">コメントを送信する</span>
+        @else
         <button type="submit" class="button">コメントを送信する</button>
+        @endif
         @endauth
         @guest
         <div class="comment--guest">コメントは会員のみ投稿できます</div>
