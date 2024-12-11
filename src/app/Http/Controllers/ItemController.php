@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Category;
-use App\Models\Order;
 use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,13 +44,7 @@ class ItemController extends Controller
         $categories = Category::all();
         return view('sell', compact('categories'));
     }
-    public function sold(Request $request)
-    {
-        $param = $request->only(['item_id', 'payment', 'post_code', 'address', 'building']);
-        $param['user_id'] = Auth::user()->id;
-        Order::create($param);
-        return redirect('/')->with('message', '購入が完了しました');
-    }
+
     public function store(ExhibitionRequest $request)
     {
         $param = $request->only('item_name', 'condition', 'description', 'price');

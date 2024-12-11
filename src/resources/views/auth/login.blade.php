@@ -8,13 +8,14 @@
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
   <link rel="stylesheet" href="{{ asset('css/common.css') }}">
   <link rel="stylesheet" href="{{ asset('css/authcommon.css') }}">
-  @yield('css')
 </head>
 
 <body>
   <header class="header">
     <div class="header__inner">
-      <img src="{{ asset('img/logo.svg') }}" alt="">
+      <a href="/">
+        <img src="{{ asset('img/logo.svg') }}" alt="">
+      </a>
     </div>
   </header>
   <main class="main">

@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,16 +19,27 @@ use App\Http\Controllers\FavoriteController;
 
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/register', [UserController::class, 'register']);
-Route::get('/mypage/profile', [UserController::class, 'editProfile']);
-Route::post('/mypage/profile', [UserController::class, 'changeProfile']);
-Route::get('/mypage', [UserController::class, 'mypage']);
-Route::get('/logout', [UserController::class, 'logout']);
 Route::get('/item/{item_id}', [ItemController::class, 'detail']);
-Route::post('/item/addcomment', [CommentController::class, 'addComment']);
-Route::post('/item/favorite', [FavoriteController::class, 'favorite']);
-Route::get('/purchase/{item_id}', [ItemController::class, 'purchase']);
-Route::put('/purchase/{item_id}', [ItemController::class, 'purchase']);
-Route::post('/purchase/{item_id}', [ItemController::class, 'sold']);
-Route::get('/purchase/address/{item_id}', [UserController::class, 'editAddress']);
-Route::get('/sell', [ItemController::class, 'sell']);
-Route::post('/sell', [ItemController::class, 'store']);
+
+
+Route::middleware('auth')->group(function () {
+  Route::prefix('mypage')->group(function () {
+    Route::get('profile', [UserController::class, 'editProfile']);
+    Route::post('profile', [UserController::class, 'changeProfile']);
+    Route::get('', [UserController::class, 'mypage']);
+  });
+  Route::prefix('item')->group(function () {
+    Route::post('addcomment', [CommentController::class, 'addComment']);
+    Route::post('favorite', [FavoriteController::class, 'favorite']);
+  });
+  Route::prefix('purchase')->group(function () {
+    Route::get('{item_id}', [ItemController::class, 'purchase']);
+    Route::put('{item_id}', [ItemController::class, 'purchase']);
+    Route::post('{item_id}', [OrderController::class, 'sold']);
+    Route::get('address/{item_id}', [OrderController::class, 'editAddress']);
+  });
+
+  Route::get('/sell', [ItemController::class, 'sell']);
+  Route::post('/sell', [ItemController::class, 'store']);
+  Route::get('/logout', [UserController::class, 'logout']);
+});

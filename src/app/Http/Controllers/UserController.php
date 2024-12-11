@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AddressRequest;
 use App\Models\Item;
-use App\Models\Order;
 
 class UserController extends Controller
 {
@@ -54,9 +53,5 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
-    }
-    public function editAddress($item_id)
-    {
-        return view('auth.editAddress', compact('item_id'));
     }
 }
