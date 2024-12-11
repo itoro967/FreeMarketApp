@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PurchaseRequest;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +13,7 @@ class OrderController extends Controller
         return view('auth.editAddress', compact('item_id'));
     }
 
-    public function sold(Request $request)
+    public function sold(PurchaseRequest $request)
     {
         $param = $request->only(['item_id', 'payment', 'post_code', 'address', 'building']);
         $param['user_id'] = Auth::user()->id;

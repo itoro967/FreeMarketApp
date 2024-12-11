@@ -21,22 +21,13 @@
   <main class="main">
     <div class="main__inner">
       <div class="title">ログイン</div>
-
-      @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-          @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
-      @endif
-
       <form class="form" action="/login" method="post">
         @csrf
         <label for="email" class="label">メールアドレス</label>
+        <x-error name="email" />
         <input type="email" class="input" name="email" id="email" value="{{old('email')}}">
         <label for="pass" class="label">パスワード</label>
+        <x-error name="password" />
         <input type="password" class="input" name="password" id="pass">
         <input type="submit" class="submit-button" value="ログインする">
       </form>

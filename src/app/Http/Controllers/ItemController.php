@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Http\Requests\ExhibitionRequest;
+use App\Http\Requests\PurchaseRequest;
 use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
@@ -26,7 +27,7 @@ class ItemController extends Controller
         $comments = Comment::where('item_id', $item_id)->get();
         return view('detail', compact('item', 'categories', 'comments'));
     }
-    public function purchase(Request $request, $item_id)
+    public function purchase(PurchaseRequest $request, $item_id)
     {
         $param = $request->only(['post_code', 'address', 'building']);
         if (!$param) {

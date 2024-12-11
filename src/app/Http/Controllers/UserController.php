@@ -44,7 +44,7 @@ class UserController extends Controller
                 Storage::delete($user->image);
         }
         $user->update($newProfile);
-        return view('auth.editProfile');
+        return redirect('/mypage/profile')->with('message', 'プロフィールを更新しました');
     }
 
     public function logout(Request $request): RedirectResponse

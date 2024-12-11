@@ -20,27 +20,18 @@
   </header>
   <main class="main">
     <div class="main__inner">
-
-      @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-          @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
-      @endif
-
-
       <div class="title">会員登録</div>
       <form class="form" action="/register" method="post">
         @csrf
         <label for="name" class="label">ユーザー名</label>
+        <x-error name="name" />
         <input type="text" class="input" name="name" id="name" value="{{old('name')}}">
         <label for="email" class="label">メールアドレス</label>
+        <x-error name="email" />
         <input type="email" class="input" name="email" id="email" value="{{old('email')}}">
 
         <label for="pass" class="label">パスワード</label>
+        <x-error name="password" />
         <input type="password" class="input" name="password" id="pass">
         <label for="confirm-pass" class="label">確認用パスワード</label>
         <input type="password" class="input" name="password_confirmation" id="confirm-pass">

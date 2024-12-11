@@ -17,9 +17,10 @@
     </div>
     <div class="payment">
       <div class="payment-title">支払い方法</div>
+      <x-error name="payment" />
       <div class="payment-content">
         <select name="payment" class="payment-select" onchange="changePayment(this.value)">
-          <option hidden>選択してください</option>
+          <option hidden value="">選択してください</option>
           <option value="コンビニ支払い">コンビニ支払い</option>
           <option value="カード支払い">カード支払い</option>
         </select>

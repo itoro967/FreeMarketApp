@@ -2,7 +2,7 @@
 
 return [
     'required' => ':attributeを入力してください',
-    'min' => ':attributeは:min文字以上で入力してください',
+    'min' => ['string' => ':attributeは:min文字以上で入力してください'],
     'max' => ':attributeは:max文字以内で入力してください',
     'email' => ':attributeはメールアドレス形式で入力してください',
     'unique' => 'この::attributeは既に使用されています',
@@ -30,6 +30,7 @@ return [
         'image' => '画像',
         'categories' => 'カテゴリー',
         'description' => '商品説明',
-        'price' => '販売価格'
+        'price' => '販売価格',
+        'payment' => '支払い方法'
     ],
 ];

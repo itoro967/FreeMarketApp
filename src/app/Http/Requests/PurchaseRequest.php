@@ -11,7 +11,7 @@ class PurchaseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class PurchaseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'payment' => 'sometimes|required',
+            'post_code' => 'sometimes|required|regex:/^[0-9]{3}-[0-9]{4}$/',
+            'address' => 'sometimes|required',
+            'building' => 'sometimes|required',
         ];
     }
 }
