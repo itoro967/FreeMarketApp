@@ -14,6 +14,10 @@ class Item extends Model
 
     public function scopeSearch(Builder $query, $name, $tab)
     {
+        if (Auth::check()) {
+            $query->where('user_id', '<>', Auth::user()->id);
+        };
+
         if ($name) {
             $query->where('name', 'like', '%' . $name . '%');
         }
