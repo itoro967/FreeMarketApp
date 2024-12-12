@@ -33,8 +33,8 @@
         <a href="/purchase/address/{{$item->id}}" class="address-edit-button">変更する</a>
       </div>
       <div class="sipping-content">
-        <span class="post-code">〒{{$post_code}}</span>
-        <div class="address">{{$address . ' ' . $building}}
+        <span class="post-code">〒{{old('post_code',$post_code)}}</span>
+        <div class="address">{{old('address',$address) . ' ' . old('building',$building)}}
         </div>
       </div>
     </div>
@@ -51,9 +51,9 @@
       </tr>
     </table>
     <input type="hidden" name="item_id" value="{{$item->id}}">
-    <input type="hidden" name="post_code" value="{{$post_code}}">
-    <input type="hidden" name="address" value="{{$address}}">
-    <input type="hidden" name="building" value="{{$building}}">
+    <input type="hidden" name="post_code" value="{{old('post_code',$post_code)}}">
+    <input type="hidden" name="address" value="{{old('address',$address)}}">
+    <input type="hidden" name="building" value="{{old('building',$building)}}">
     <button type="submit" class="button">購入する</button>
   </div>
   </div>
