@@ -37,7 +37,7 @@
 }
 
 .item--sold::before {
-  content: "売り切れ";
+  content: "Sold";
   display: inline-block;
   position: absolute;
   height: 150px;
