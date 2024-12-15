@@ -1,11 +1,13 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +24,7 @@ Route::get('/register', [UserController::class, 'register']);
 Route::get('/item/{item_id}', [ItemController::class, 'detail']);
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
   Route::prefix('mypage')->group(function () {
     Route::get('profile', [UserController::class, 'editProfile']);
     Route::post('profile', [UserController::class, 'changeProfile']);
@@ -43,3 +45,19 @@ Route::middleware('auth')->group(function () {
   Route::post('/sell', [ItemController::class, 'store']);
   Route::get('/logout', [UserController::class, 'logout']);
 });
+
+Route::get('/email/verify', function () {
+  return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+  $request->fulfill();
+
+  return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+  $request->user()->sendEmailVerificationNotification();
+
+  return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
