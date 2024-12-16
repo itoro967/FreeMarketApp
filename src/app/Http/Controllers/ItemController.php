@@ -29,6 +29,9 @@ class ItemController extends Controller
     }
     public function purchase(PurchaseRequest $request, $item_id)
     {
+        #配送先変更時のデータ保持
+        $request->flash();
+
         $param = $request->only(['post_code', 'address', 'building']);
         if (!$param) {
             $param = [

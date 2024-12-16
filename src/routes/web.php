@@ -9,6 +9,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Middleware\NotVerifiedLogout;
+use App\Http\Middleware\IsSetProfile;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +21,13 @@ use App\Http\Middleware\NotVerifiedLogout;
 |
 */
 
-Route::middleware(NotVerifiedLogout::class)->group(function () {
+Route::middleware([NotVerifiedLogout::class, IsSetProfile::class])->group(function () {
   Route::get('/', [ItemController::class, 'index']);
   Route::get('/register', [UserController::class, 'register']);
   Route::get('/item/{item_id}', [ItemController::class, 'detail']);
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', IsSetProfile::class])->group(function () {
   Route::prefix('mypage')->group(function () {
     Route::get('profile', [UserController::class, 'editProfile']);
     Route::post('profile', [UserController::class, 'changeProfile']);
@@ -55,7 +56,7 @@ Route::get('/email/verify', function () {
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
   $request->fulfill();
 
-  return redirect('/');
+  return redirect('/mypage/profile');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
