@@ -8,6 +8,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Middleware\NotVerifiedLogout;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,10 +20,11 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Route::get('/', [ItemController::class, 'index']);
-Route::get('/register', [UserController::class, 'register']);
-Route::get('/item/{item_id}', [ItemController::class, 'detail']);
-
+Route::middleware(NotVerifiedLogout::class)->group(function () {
+  Route::get('/', [ItemController::class, 'index']);
+  Route::get('/register', [UserController::class, 'register']);
+  Route::get('/item/{item_id}', [ItemController::class, 'detail']);
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
   Route::prefix('mypage')->group(function () {
