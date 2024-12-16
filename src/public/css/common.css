@@ -81,6 +81,16 @@
   text-decoration: none;
 }
 
+@media screen and (max-width: 900px) {
+  .logo-image {
+    width: 150px;
+  }
+
+  .search-input {
+    width: 250px;
+  }
+}
+
 @keyframes progress {
   0% {
     width: 100%;
