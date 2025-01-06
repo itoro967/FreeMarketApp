@@ -1,0 +1,120 @@
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: black;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.search-input {
+  height: 32px;
+  width: 400px;
+}
+
+.login-button,
+.logout-button,
+.mypage-button {
+  color: #FFFFFF;
+  margin: 0 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.main {
+  padding-top: 70px;
+}
+
+.button {
+  background: #FF5555;
+  display: inline-block;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px;
+  margin: 10px 0;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+}
+
+.button--disable {
+  background: #818181;
+  cursor: default;
+}
+
+.message {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  background-color: aquamarine;
+  width: 300px;
+  border-radius: 5px;
+  animation: message 5.5s ease-in-out forwards;
+}
+
+.message__content {
+  padding: 10px;
+}
+
+.message__progress-bar {
+  background-color: rgb(194, 194, 194);
+  height: 10px;
+  animation: progress 5s linear forwards;
+  border-radius: 0 5px 5px 0;
+}
+
+.sell-button {
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 900px) {
+  .logo-image {
+    width: 150px;
+  }
+
+  .search-input {
+    width: 250px;
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes message {
+  0% {
+    transform: translate(-50%, -100%);
+  }
+
+  5% {
+    transform: translate(-50%, 0);
+  }
+
+  95% {
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    transform: translate(-50%, -100%);
+  }
+}

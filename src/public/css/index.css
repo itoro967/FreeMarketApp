@@ -1,0 +1,67 @@
+.main__tab {
+  box-shadow: 0 3px 3px gray;
+  padding: 15px 0 0 50px;
+  background-color: white;
+}
+
+.main__items {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+  padding: 20px;
+}
+
+.tab-recommend,
+.tab-mylist {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+.tab--active {
+  color: red;
+}
+
+.item {
+  text-decoration: none;
+  color: #000000;
+}
+
+.item-image {
+  height: 290px;
+  width: 290px;
+  object-fit: cover;
+  display: block;
+}
+
+.item--sold::before {
+  content: "Sold";
+  display: inline-block;
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  padding: 30px 0;
+  transform: rotate(-45deg);
+  clip-path: polygon(0 50%, 50% 0%, 100% 50%);
+  background-color: #ff4444;
+  color: #ffffff;
+  font-weight: bold;
+  margin: -22px;
+}
+
+@media screen and (max-width: 900px) {
+  .item-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .item--sold::before {
+    width: 100px;
+    height: 100px;
+    margin: -14px;
+    padding: 20px 0;
+  }
+}
