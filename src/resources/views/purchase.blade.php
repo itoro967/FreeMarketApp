@@ -9,7 +9,7 @@
   @csrf
   <div class="item-purchase">
     <div class="item">
-      <img class="item-image" src="{{$item->image}}" alt="{{$item->name}}" onerror='this.src="{{Storage::url($item->image)}}";'></img>
+      <img class="item-image" src="{{Storage::url($item->image)}}" alt="{{$item->name}}"></img>
       <div class="item-detail">
         <div class="item-name">{{$item->name}}</div>
         <div class="item-price">\<span class="price--value">{{ number_format($item->price)}}</span>(税込)</div>

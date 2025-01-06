@@ -12,9 +12,14 @@ class ItemSeeder extends Seeder
      */
     public function run(): void
     {
+        #商品用画像をコピー
+        $files = glob('public/img/items/*');
+        foreach ($files as $file) {
+            copy($file, 'storage/app/public/item/' . basename($file));
+        }
         $params = [
             [
-                'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
+                'image' => 'public/item/Armani+Mens+Clock.jpg',
                 'name' => '腕時計',
                 'brand' => 'Armani',
                 'price' => 15000,
@@ -23,7 +28,7 @@ class ItemSeeder extends Seeder
                 'category_id' => [1, 5]
             ],
             [
-                'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
+                'image' => 'public/item/HDD+Hard+Disk.jpg',
                 'name' => 'HDD',
                 'brand' => 'WESTERN DIGITAL',
                 'price' => 5000,
@@ -33,7 +38,7 @@ class ItemSeeder extends Seeder
 
             ],
             [
-                'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
+                'image' => 'public/item/iLoveIMG+d.jpg',
                 'name' => '玉ねぎ3束',
                 'price' => 300,
                 'description' => '新鮮な玉ねぎ3束のセット',
@@ -41,7 +46,7 @@ class ItemSeeder extends Seeder
                 'category_id' => []
             ],
             [
-                'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg',
+                'image' => 'public/item/Leather+Shoes+Product+Photo.jpg',
                 'name' => '革靴',
                 'brand' => 'Allen Edmonds',
                 'price' => 4000,
@@ -50,7 +55,7 @@ class ItemSeeder extends Seeder
                 'category_id' => [1, 5]
             ],
             [
-                'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg',
+                'image' => 'public/item/Living+Room+Laptop.jpg',
                 'name' => 'ノートPC',
                 'brand' => 'Apple',
                 'price' => 45000,
@@ -59,7 +64,7 @@ class ItemSeeder extends Seeder
                 'category_id' => [2]
             ],
             [
-                'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg',
+                'image' => 'public/item/Music+Mic+4632231.jpg',
                 'name' => 'マイク',
                 'brand' => 'Maxim',
                 'price' => 8000,
@@ -68,7 +73,7 @@ class ItemSeeder extends Seeder
                 'category_id' => [2]
             ],
             [
-                'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg',
+                'image' => 'public/item/Purse+fashion+pocket.jpg',
                 'name' => 'ショルダーバッグ',
                 'brand' => 'Nine West',
                 'price' => 3500,
@@ -77,7 +82,7 @@ class ItemSeeder extends Seeder
                 'category_id' => [1, 4]
             ],
             [
-                'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
+                'image' => 'public/item/Tumbler+souvenir.jpg',
                 'name' => 'タンブラー',
                 'price' => 500,
                 'description' => '使いやすいタンブラー',
@@ -85,7 +90,7 @@ class ItemSeeder extends Seeder
                 'category_id' => [10]
             ],
             [
-                'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
+                'image' => 'public/item/Waitress+with+Coffee+Grinder.jpg',
                 'name' => 'コーヒーミル',
                 'price' => 4000,
                 'description' => '手動のコーヒーミル',
@@ -93,7 +98,7 @@ class ItemSeeder extends Seeder
                 'category_id' => [3, 10]
             ],
             [
-                'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg',
+                'image' => 'public/item/外出メイクアップセット.jpg',
                 'name' => 'メイクセット',
                 'price' => 2500,
                 'description' => '便利なメイクアップセット',

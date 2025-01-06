@@ -7,7 +7,7 @@
 @section('main')
 <div class="main__inner">
   <div @class(['item','item--sold'=>($item->isSold())])>
-    <img class="item-image" src="{{$item->image}}" alt="{{$item->name}}" onerror='this.src="{{Storage::url($item->image)}}";'></img>
+    <img class="item-image" src="{{Storage::url($item->image)}}" alt="{{$item->name}}"></img>
   </div>
   <div class="detail">
     <div class="item-name">{{$item->name}}</div>
