@@ -25,7 +25,7 @@ services:
             - ./docker/mysql/data:/var/lib/mysql
             - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
         ports:
-            - "3306:3306" #TODO デバッグ用のため提出時に削除
+            - "3306:3306"
     
     mailhog:
         image: mailhog/mailhog:latest
