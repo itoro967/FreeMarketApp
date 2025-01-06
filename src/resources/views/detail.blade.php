@@ -71,7 +71,7 @@
       @foreach($comments as $comment)
       <div class="comment">
         <div class="user">
-          <img src="{{Storage::url($comment->user->image)}}" alt="" class="user-icon">
+          <img src="{{Storage::url($comment->user->image)}}" alt="" class="user-icon" onerror=this.src="{{asset('img/userImage.svg')}}">
           <span class="user-name">{{$comment->user->name}}</span>
         </div>
         <div class="comment-content">{{$comment->content}}

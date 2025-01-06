@@ -51,12 +51,11 @@ class ItemController extends Controller
 
     public function store(ExhibitionRequest $request)
     {
-        $param = $request->only('item_name', 'condition', 'description', 'price');
+        $param = $request->only('item_name', 'brand', 'condition', 'description', 'price');
         $param['user_id'] = Auth::user()->id;
         $param['name'] = $param['item_name'];
         unset($param['item_name']);
         $category_id_list = $request->only('categories');
-        // TODO phpはデフォルトでアップロードファイルサイズ2M?後でphp.ini修正
         $image = $request->file('image')->store('public/item');
         $param += compact('image');
         $item = Item::create($param);

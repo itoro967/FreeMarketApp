@@ -59,6 +59,7 @@
 .item-category,
 .item-condition,
 .item-name,
+.item-brand,
 .item-description,
 .item-price {
   width: 100%;
@@ -89,6 +90,7 @@
 .item-category__title,
 .item-condition__title,
 .item-name__title,
+.item-brand__title,
 .item-description__title,
 .item-price__title {
   font-weight: bold;
@@ -98,6 +100,7 @@
 
 .item-condition__select,
 .item-name__input,
+.item-brand__input,
 .item-description__input,
 .item-price__input {
   width: 100%;

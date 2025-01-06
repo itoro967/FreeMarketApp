@@ -11,7 +11,7 @@
   <form class="form" action="/mypage/profile" method="post" enctype="multipart/form-data">
     @csrf
     <div class="plofile-image">
-      <img class="image" @if(Auth::user()->image) src="{{Storage::url(Auth::user()->image)}}" @endif alt=""></img>
+      <img class="image" src="{{Storage::url(Auth::user()->image)}}" onerror=this.src="{{asset('img/userImage.svg')}}"></img>
       <label for="image" class="image-label">画像を選択する</label>
       <input type="file" name="image" id="image" class="image-select-button" onchange="previewImage(this)"></input>
     </div>

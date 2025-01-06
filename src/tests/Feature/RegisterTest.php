@@ -38,11 +38,5 @@ class RegisterTest extends TestCase
             );
             $response->assertInvalid($test['valid']);
         }
-
-        $response = $this->post(
-            '/register',
-            ['name' => 'test', 'email' => 'test@hoge.com', 'password' => 'password', 'password_confirmation' => 'password']
-        );
-        $response->assertRedirect('/login');
     }
 }

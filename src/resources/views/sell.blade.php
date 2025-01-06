@@ -44,6 +44,10 @@
     <x-error name="item_name" />
     <input type="text" name="item_name" class="item-name__input" value="{{old('item_name')}}">
   </div>
+  <div class="item-brand">
+    <div class="item-brand__title">ブランド名</div>
+    <input type="text" name="brand" class="item-brand__input" value="{{old('brand')}}">
+  </div>
   <div class="item-description">
     <div class="item-description__title">商品の説明</div>
     <x-error name="description" />

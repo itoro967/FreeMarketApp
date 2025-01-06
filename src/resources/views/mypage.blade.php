@@ -7,7 +7,7 @@
 
 @section('main')
 <div class="profile">
-  <img src="{{Storage::url(Auth::user()->image)}}" class="profile-image">
+  <img src="{{Storage::url(Auth::user()->image)}}" class="profile-image" onerror=this.src="{{asset('img/userImage.svg')}}">
   <a class="profile-name">{{Auth::user()->name}}</a>
   <a class="edit-profile" href="/mypage/profile">プロフィール変更</a>
 </div>

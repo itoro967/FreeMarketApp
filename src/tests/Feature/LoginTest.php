@@ -9,6 +9,7 @@ class LoginTest extends TestCase
 
     public function test_login(): void
     {
+        $this->seed();
         $tests = [
             [
                 'param' => ['password' => 'password'],

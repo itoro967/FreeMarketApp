@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
             'post_code' => '000-0000',
             'address' => 'hogehoge',
             'building' => 'hoge',
+            'email_verified_at' => '2025-01-01 00:00:00',
 
         ];
         User::create($param);

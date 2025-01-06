@@ -1,19 +1,25 @@
 ```mermaid
 erDiagram
 
-comments}o--||users:""
-comments}o--||items:""
-favorites}o--||users:""
-favorites}o--||items:""
+users||--o|items:""
 
-item_category}o--||categories:""
-item_category}|--||items:""
-orders}o--||users:""
+items||--o{comments:""
+users||--o{comments:""
+
+items||--o{favorites:""
+users||--o{favorites:""
+
+categories||--o{item_category:""
+items||--o{item_category:""
+
+items||--o|orders:""
+users||--o|orders:""
 
 users{
   unsigned_bigint id PK
   string name
   string email UK
+  string email_verified_at
   string password
   string post_code
   string address
@@ -29,6 +35,7 @@ items{
   unsigned_integer price
   string description
   string condition
+  unsigned_bigint user_id FK
   timestamp created_at
   timestamp updated_at
 }
@@ -42,7 +49,7 @@ comments{
 }
 categories{
   unsigned_bigint id PK
-  string content
+  string content UK
   timestamp created_at
   timestamp updated_at
 }
@@ -53,14 +60,15 @@ favorites{
   timestamp updated_at
 }
 item_category{
-  unsigned_bigint category_id PK,FK
-  unsigned_bigint item_id PK,FK
+  unsigned_bigint id PK
+  unsigned_bigint category_id FK
+  unsigned_bigint item_id FK
   timestamp created_at
   timestamp updated_at
 }
 orders{
-  unsigned_bigint id PK
-  unsigned_bigint item_id FK
+  unsigned_bigint item_id PK,FK
+  unsigned_bigint user_id PK,FK
   string post_code
   string address
   string building
