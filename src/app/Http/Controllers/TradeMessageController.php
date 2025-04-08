@@ -36,7 +36,7 @@ class TradeMessageController extends Controller
         $to_user = $user_type == 'buyer' ? $item->seller : $item->buyer;
         // 取引中アイテムを新着メッセージ順でソート 既読未読は考慮しない
         $others_items = Auth::user()->buyerTradingItem
-            ->merge(Auth::user()->sellerTradingItem)->where('user_id', '!=', $user->id)
+            ->merge(Auth::user()->sellerTradingItem)
             ->where('id', '!=', $item->id)->sortByDesc(function ($item) {
                 return $item->order->tradingMessages->last();
             });
