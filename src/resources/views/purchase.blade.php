@@ -12,7 +12,7 @@
       <img class="item-image" src="{{Storage::url($item->image)}}" alt="{{$item->name}}"></img>
       <div class="item-detail">
         <div class="item-name">{{$item->name}}</div>
-        <div class="item-price">\<span class="price--value">{{ number_format($item->price)}}</span>(税込)</div>
+        <div class="item-price">&yen;<span class="price--value">{{ number_format($item->price)}}</span>(税込)</div>
       </div>
     </div>
     <div class="payment">
@@ -29,7 +29,6 @@
     <div class="sipping">
       <div class="sipping__header">
         <div class="sipping-title">配送先</div>
-        <!-- TODO　後で住所変更画面を作る -->
         <a href="/purchase/address/{{$item->id}}" class="address-edit-button">変更する</a>
       </div>
       <div class="sipping-content">
@@ -43,7 +42,7 @@
     <table class="result-table">
       <tr class="result-table-tr">
         <th>商品代金</th>
-        <td>\{{ number_format($item->price)}}</td>
+        <td>&yen;{{ number_format($item->price)}}</td>
       </tr>
       <tr>
         <th>支払い方法</th>

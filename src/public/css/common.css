@@ -2,6 +2,7 @@
   position: fixed;
   width: 100%;
   background-color: black;
+  z-index: 10;
 }
 
 .header__inner {
@@ -60,6 +61,7 @@
   width: 300px;
   border-radius: 5px;
   animation: message 5.5s ease-in-out forwards;
+  z-index: 99;
 }
 
 .message__content {

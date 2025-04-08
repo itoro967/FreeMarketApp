@@ -59,4 +59,12 @@ class Item extends Model
     {
         return $this->order()->exists();
     }
+    public function seller()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function buyer()
+    {
+        return $this->hasOneThrough(User::class, Order::class,'item_id', 'id', 'id', 'user_id');
+    }
 }

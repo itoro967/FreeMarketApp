@@ -1,3 +1,15 @@
+.profile{
+  display: flex;
+  align-items: center;
+  margin: 0 60px;
+}
+.profile_user-rating{
+  margin: 0 20px;
+}
+.profile_user-star{
+  width: 30px;
+  margin: 0 -5px;
+}
 .profile-image {
   display: inline-block;
   width: 100px;
@@ -26,4 +38,24 @@
   vertical-align: middle;
   cursor: pointer;
   text-decoration: none;
+}
+.unread{
+  display: inline-block;
+  min-width: 32px;
+  height: 32px;
+  text-align: center;
+  background: #FF5555;
+  color: white;
+  font-weight: bold;
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 16px;
+  vertical-align: text-bottom;
+  line-height: 16px;
+}
+.unread-each{
+  position: absolute;
+  margin: 10px;
+  top:0;
+  left: 0;
 }

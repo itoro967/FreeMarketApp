@@ -51,4 +51,23 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Item::class, Order::class);
     }
+    public function buyerTradingItem()
+    {
+        return $this->belongsToMany(Item::class, Order::class)->where('is_completed', false);
+    }
+    public function sellerTradingItem()
+    {
+        return $this->hasMany(Item::class)->whereHas('order', function ($query) {
+            $query->where('is_completed', false);
+        });
+    }
+    public function ratingAverage()
+    {
+        // 売り手の評価と買い手の評価を平均して返す
+        return $this->hasManyThrough(Order::class, Item::class)
+            ->where('is_completed', true)->pluck('seller_rating')->merge(
+                $this->hasMany(Order::class)
+                    ->where('is_completed', true)->pluck('buyer_rating')
+            )->avg();
+    }
 }

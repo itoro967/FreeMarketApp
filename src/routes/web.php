@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\TradeMessageController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Middleware\NotVerifiedLogout;
 use App\Http\Middleware\IsSetProfile;
@@ -31,7 +32,7 @@ Route::middleware(['auth', 'verified', IsSetProfile::class])->group(function () 
   Route::prefix('mypage')->group(function () {
     Route::get('profile', [UserController::class, 'editProfile']);
     Route::post('profile', [UserController::class, 'changeProfile']);
-    Route::get('', [UserController::class, 'mypage']);
+    Route::get('', [UserController::class, 'mypage'])->name('mypage');
   });
   Route::prefix('item')->group(function () {
     Route::post('addcomment', [CommentController::class, 'addComment']);
@@ -47,6 +48,13 @@ Route::middleware(['auth', 'verified', IsSetProfile::class])->group(function () 
   Route::get('/sell', [ItemController::class, 'sell']);
   Route::post('/sell', [ItemController::class, 'store']);
   Route::get('/logout', [UserController::class, 'logout']);
+
+  Route::get('/trading/item/{item_id}', [TradeMessageController::class, 'chat'])->name('tradingMessage.chat');
+  Route::post('/trading/message', [TradeMessageController::class, 'store'])->name('tradingMessage.store');
+  Route::post('/trading/message/destroy', [TradeMessageController::class, 'destroy'])->name('tradingMessage.destroy');
+  Route::post('/trading/message/correct', [TradeMessageController::class, 'correct'])->name('tradingMessage.correct');
+  Route::post('/trading/complete', [OrderController::class, 'complete'])->name('tradingMessage.complete');
+
 });
 
 Route::get('/email/verify', function () {

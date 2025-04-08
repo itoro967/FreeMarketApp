@@ -15,6 +15,10 @@ items||--o{item_category:""
 items||--o|orders:""
 users||--o|orders:""
 
+users||--o{trade_messages:""
+orders||--o{trade_messages:""
+trade_messages||--o{trade_message_images:""
+
 users{
   unsigned_bigint id PK
   string name
@@ -67,10 +71,28 @@ item_category{
   timestamp updated_at
 }
 orders{
-  unsigned_bigint item_id PK,FK
-  unsigned_bigint user_id PK,FK
+  unsigned_bigint id PK
+  unsigned_bigint item_id FK
+  unsigned_bigint user_id FK
   string post_code
   string address
   string building
 }
+trade_messages{
+  unsigned_bigint id PK
+  unsigned_bigint user_id FK
+  unsigned_bigint order_id FK
+  text message
+  boolean message
+  timestamp created_at
+  timestamp updated_at
+}
+trade_message_images{
+  unsigned_bigint id PK
+  unsigned_bigint trade_message_id FK
+  string image_path
+  timestamp created_at
+  timestamp updated_at
+}
+
 ```

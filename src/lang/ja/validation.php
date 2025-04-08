@@ -6,8 +6,9 @@ return [
     'max' => ['string' => ':attributeは:max文字以内で入力してください'],
     'email' => ':attributeはメールアドレス形式で入力してください',
     'unique' => 'この::attributeは既に使用されています',
-    'mimes' => '有効な拡張子は:valuesです',
-
+    'mimes' => '「.png」または「.jpeg」の拡張子で入力してください',
+    'mime' => '有効な拡張子は:valuesです',
+    
     'custom' => [
         'password' =>
         [
@@ -31,6 +32,7 @@ return [
         'categories' => 'カテゴリー',
         'description' => '商品説明',
         'price' => '販売価格',
-        'payment' => '支払い方法'
+        'payment' => '支払い方法',
+        'message' => '本文'
     ],
 ];

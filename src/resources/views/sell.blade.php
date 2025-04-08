@@ -57,7 +57,7 @@
     <div class="item-price__title">販売価格</div>
     <x-error name="price" />
     <div class="item-price__input-box">
-      \<input type="number" name="price" class="item-price__input" min="0" value="{{old('price')}}">
+      &yen;<input type="number" name="price" class="item-price__input" min="0" value="{{old('price')}}">
     </div>
 
     </input>

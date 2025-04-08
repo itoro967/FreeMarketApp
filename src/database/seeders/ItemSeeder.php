@@ -25,7 +25,8 @@ class ItemSeeder extends Seeder
                 'price' => 15000,
                 'description' => 'スタイリッシュなデザインのメンズ腕時計',
                 'condition' => '良好',
-                'category_id' => [1, 5]
+                'category_id' => [1, 5],
+                'user_id' => 1
             ],
             [
                 'image' => 'public/item/HDD+Hard+Disk.jpg',
@@ -34,7 +35,8 @@ class ItemSeeder extends Seeder
                 'price' => 5000,
                 'description' => '高速で信頼性の高いハードディスク',
                 'condition' => '目立った傷や汚れなし',
-                'category_id' => [2]
+                'category_id' => [2],
+                'user_id' => 1
 
             ],
             [
@@ -43,7 +45,8 @@ class ItemSeeder extends Seeder
                 'price' => 300,
                 'description' => '新鮮な玉ねぎ3束のセット',
                 'condition' => 'やや傷や汚れあり',
-                'category_id' => []
+                'category_id' => [],
+                'user_id' => 1
             ],
             [
                 'image' => 'public/item/Leather+Shoes+Product+Photo.jpg',
@@ -52,7 +55,8 @@ class ItemSeeder extends Seeder
                 'price' => 4000,
                 'description' => 'クラシックなデザインの革靴',
                 'condition' => '状態が悪い',
-                'category_id' => [1, 5]
+                'category_id' => [1, 5],
+                'user_id' => 1
             ],
             [
                 'image' => 'public/item/Living+Room+Laptop.jpg',
@@ -61,7 +65,8 @@ class ItemSeeder extends Seeder
                 'price' => 45000,
                 'description' => '高性能なノートパソコン',
                 'condition' => '良好',
-                'category_id' => [2]
+                'category_id' => [2],
+                'user_id' => 1
             ],
             [
                 'image' => 'public/item/Music+Mic+4632231.jpg',
@@ -70,7 +75,8 @@ class ItemSeeder extends Seeder
                 'price' => 8000,
                 'description' => '高音質のレコーディング用マイク',
                 'condition' => '目立った傷や汚れなし',
-                'category_id' => [2]
+                'category_id' => [2],
+                'user_id' => 2
             ],
             [
                 'image' => 'public/item/Purse+fashion+pocket.jpg',
@@ -79,7 +85,8 @@ class ItemSeeder extends Seeder
                 'price' => 3500,
                 'description' => 'おしゃれなショルダーバッグ',
                 'condition' => 'やや傷や汚れあり',
-                'category_id' => [1, 4]
+                'category_id' => [1, 4],
+                'user_id' => 2
             ],
             [
                 'image' => 'public/item/Tumbler+souvenir.jpg',
@@ -87,7 +94,8 @@ class ItemSeeder extends Seeder
                 'price' => 500,
                 'description' => '使いやすいタンブラー',
                 'condition' => '状態が悪い',
-                'category_id' => [10]
+                'category_id' => [10],
+                'user_id' => 2
             ],
             [
                 'image' => 'public/item/Waitress+with+Coffee+Grinder.jpg',
@@ -95,7 +103,8 @@ class ItemSeeder extends Seeder
                 'price' => 4000,
                 'description' => '手動のコーヒーミル',
                 'condition' => '良好',
-                'category_id' => [3, 10]
+                'category_id' => [3, 10],
+                'user_id' => 2
             ],
             [
                 'image' => 'public/item/外出メイクアップセット.jpg',
@@ -103,13 +112,13 @@ class ItemSeeder extends Seeder
                 'price' => 2500,
                 'description' => '便利なメイクアップセット',
                 'condition' => '目立った傷や汚れなし',
-                'category_id' => [4, 6]
+                'category_id' => [4, 6],
+                'user_id' => 2
             ],
         ];
         foreach ($params as $param) {
             $category_id_list = $param['category_id'];
             unset($param['category_id']);
-            $param['user_id'] = 1;
             $item = Item::create($param);
             $item->categories()->attach($category_id_list);
         }

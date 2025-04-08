@@ -23,13 +23,29 @@ class UserController extends Controller
 
     public function mypage(Request $request)
     {
+        $user = Auth::user();
         $tab = $request->input('tab');
+        $base_url = $tab == 'trading' ? '/trading/' : '/';
+
+        // 取引中アイテムを新着メッセージ順でソート 既読未読は考慮しない
+        $trading_items = $user->buyerTradingItem->merge($user->sellerTradingItem)
+            ->sortByDesc(function ($item) {
+                return $item->order->tradingMessages->last();
+            });
+
         if ($tab == 'buy' or $tab == null) {
-            $items = Auth::user()->soldItem;
+            $items = $user->soldItem;
         } else if ($tab == 'sell') {
-            $items = Item::where('user_id', Auth::user()->id)->get();
+            $items = Item::where('user_id', $user->id)->get();
+        } else if ($tab == 'trading') {
+            $items = $trading_items;
         }
-        return view('mypage', compact('items'));
+        // 取引メッセージの合計を取得
+        $sum_unread_messages = 0;
+        foreach ($trading_items as $item) {
+            $sum_unread_messages += $item->order->unreadMessageCounts($user->id);
+        }
+        return view('mypage', compact('base_url','items', 'sum_unread_messages'));
     }
 
     public function changeProfile(AddressRequest $request)

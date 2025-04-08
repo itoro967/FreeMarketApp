@@ -12,17 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->primary(['user_id', 'item_id']);
+            $table->id();
             $table->foreignId('item_id')->constrained()->restrictOnUpdate()->restrictOnDelete();
             $table->foreignId('user_id')->constrained()->restrictOnUpdate()->restrictOnDelete();
             $table->string('payment');
             $table->string('post_code');
             $table->string('address');
             $table->string('building');
+            $table->boolean('is_completed')->default(false);
+            // 売り手の評価
+            $table->unsignedTinyInteger('seller_rating')->nullable();
+            // 買い手の評価
+            $table->unsignedTinyInteger('buyer_rating')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

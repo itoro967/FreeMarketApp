@@ -12,7 +12,7 @@
   <div class="detail">
     <div class="item-name">{{$item->name}}</div>
     <div class="item-brand">{{$item->brand}}</div>
-    <div class="item-price">\<span class="price--value">{{ number_format($item->price)}}</span>(税込)</div>
+    <div class="item-price">&yen;<span class="price--value">{{ number_format($item->price)}}</span>(税込)</div>
     <div>
       <span class="favorite-icon">
         <form action="favorite" class="favorite-form" method="post">
@@ -39,7 +39,7 @@
         <span>{{count($comments)}}</span>
       </span>
     </div>
-    @if($item->isSold())
+    @if($item->isSold()||$item->user_id == Auth::id())
     <span class="button button--disable">商品手続きへ</span>
     @else
     <a href="/purchase/{{$item->id}}" class="button">商品手続きへ</a>
